@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <meta http-equiv=X-UA-Compatible content="IE=edge">
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel=icon href=/favicon.ico>
+  <title>GrizzPark</title>
+  <link href=/js/about.6caac6af.js rel=prefetch>
+  <link href=/css/app.f21d90f9.css rel=preload as=style>
+  <link href=/js/app.14985fd2.js rel=preload as=script>
+  <link href=/js/chunk-vendors.a616f3d7.js rel=preload as=script>
+  <link href=/css/app.f21d90f9.css rel=stylesheet>
+</head>
+<body>
+  <nav class="navbar navbar-dark fixed-top navbar-expand-sm" style="background-color: #89734c;">
+          <!-- <div class="container-fluid"> -->
+          <a class="navbar-brand" href="#">GrizzPark</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active"><a class="nav-link" href="">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="">About</a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://github.com/vfranco2/GrizzPark">Github</a></li>
+              </ul>
+          </div>
+      </nav>
+
+  <noscript><strong>We're sorry, but GrizzPark doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript>
+  <div id=app></div>
+  <script src=/js/chunk-vendors.a616f3d7.js></script>
+  <script src=/js/app.14985fd2.js></script>
+
+  <script>
+  function refresh(node)
+  {
+    var times = 3500; // gap in Milli Seconds;
+    (function startRefresh()
+    {
+      var address;
+      if(node.src.indexOf('?')>-1)
+      address = node.src.split('?')[0];
+      else
+      address = node.src;
+      node.src = address+"?time="+new Date().getTime();
+      setTimeout(startRefresh,times);
+    })();
+  }
+  window.onload = function()
+  {
+    var node = document.getElementById('img');
+    refresh(node);
+  }
+  </script>
+
+  <div class="container">
+      <div class="cont1">
+        <div class="row">
+            <div class="card">
+              <img class="card-img-top" id="img" alt="Feed_status" src=".\img\testpic.jpg"; width="auto"; height="auto"; style="transform:rotate(180deg)";></img>
+              <div class="card-body">
+                <h5 class="card-title">Feed_1</h5>
+                <p class="card-text">This is our live feed of the EC Parking Lot, Camera 1. Internal use, WIP!</p>
+                <a href="https://github.com/vfranco2/GrizzPark" class="btn btn-primary">Visit our GitHub!</a>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+
+
+
+
+
+</body></html>
