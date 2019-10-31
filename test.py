@@ -3,7 +3,7 @@ import argparse
 import time
 import cv2
 import os
-
+import MySQLdb
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True,
@@ -30,6 +30,7 @@ print("[INFO] loading YOLO from disk...")
 net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
 
 image = cv2.imread(args["image"])
+#print(args["image"])
 (H, W) = image.shape[:2]
 
 ln = net.getLayerNames()
@@ -79,5 +80,22 @@ if len(idxs) > 0:
  			0.5, color, 2)
 
 print(str(len(idxs)) + " detections found")
+num = len(idxs)
+db = MySQLdb.connect(host="localhost", user="root", passwd="pass", db="project")
+cur = db.cursor()
+rows = ""
+if(args["image"][0] == "s"):
+        rows = "second"
+else:
+        rows = "first"
+
+
+sql = "INSERT INTO data(row ,numOfCars) VALUES ('%s','%d')" % (rows, num)
+cur.execute(sql)
+db.commit()
+db.close()
+
+
+
 #cv2.imshow("Image", image)
 #cv2.waitKey(0)

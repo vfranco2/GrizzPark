@@ -1,6 +1,6 @@
 from PIL import Image
 
-image = Image.open('/home/jon/Pictures/testpic.jpg')
+image = Image.open('/var/www/html/img/testpic.jpg')
 box = (300, 0, 900, 700)
 image1 = image.crop(box)
 first_row_ = image1.rotate(-200)
