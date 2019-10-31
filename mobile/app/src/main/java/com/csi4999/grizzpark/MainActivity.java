@@ -16,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.Handler;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView[] textViewArray = new TextView[2];
     RequestQueue queue;
-    String url ="http://3.133.151.170:4444/";
+    String url ="http://3.133.144.189:4444/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,36 +50,50 @@ public class MainActivity extends AppCompatActivity {
         gradientDrawable[0] = (GradientDrawable) textViewArray[0].getBackground().mutate();
         gradientDrawable[1] = (GradientDrawable) textViewArray[1].getBackground().mutate();
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        final Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                //FROM HERE
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                        (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try{
-                            JSONArray rowstate = response.getJSONArray("data");
-                            for (int i = 0; i<4; i++){
-                                int[] tempvar = new int [2];
-                                JSONObject obj = rowstate.getJSONObject(i);
-                                rowvar[i] = obj.getInt("numOfCars");
-                                int spots = 21-rowvar[i];
-                                textViewArray[i].setText(spots+" spot(s) available");
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try{
+                                    JSONArray rowstate = response.getJSONArray("data");
+                                    for (int i = 0; i<4; i++){
+                                        //int[] tempvar = new int [2];
+                                        JSONObject obj = rowstate.getJSONObject(i);
+                                        rowvar[i] = obj.getInt("numOfCars");
+                                        int spots = 42-rowvar[i];
+                                        textViewArray[i].setText(spots+" cars detected");
 //Integer.toString(rowvar[i])
 
-                                if (rowvar[i] < 14){gradientDrawable[i].setColor(Color.argb(60,177,255,177));}
-                                else if (rowvar[i] == 21){gradientDrawable[i].setColor(Color.argb(60,157,0,0));}
-                                else {gradientDrawable[i].setColor(Color.argb(60,245,245,10));}
+                                        if (rowvar[i] < 18){gradientDrawable[i].setColor(Color.argb(80,177,255,177));}
+                                        else if (rowvar[i] == 42){gradientDrawable[i].setColor(Color.argb(80,157,0,0));}
+                                        else {gradientDrawable[i].setColor(Color.argb(80,245,245,10));}
+                                    }
+                                }
+                                catch (JSONException e){
+                                    System.out.println("off");
+                                }
                             }
-                        }
-                        catch (JSONException e){
-                            System.out.println("off");
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-                    }
-                });
-        queue.add(jsonObjectRequest);
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO: Handle error
+                            }
+                        });
+                queue.add(jsonObjectRequest);
+
+                handler.postDelayed(this, 1000);
+            }
+        };handler.postDelayed(runnable, 1000) ;
+
+
+
+
+
     }
 }
