@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "156283788311",
+    "firebase_url": "https://grizzpark-974c8.firebaseio.com",
+    "project_id": "grizzpark-974c8",
+    "storage_bucket": "grizzpark-974c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156283788311:android:523ac4b3bec6b0f1731052",
+        "android_client_info": {
+          "package_name": "com.csi4999.grizzpark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156283788311-ur3g10ssr91os059mvecsatvhvuh0ga9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA91BGNjXtzonsDR9ISy2BEO10O-ZKq2pE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156283788311-ur3g10ssr91os059mvecsatvhvuh0ga9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
