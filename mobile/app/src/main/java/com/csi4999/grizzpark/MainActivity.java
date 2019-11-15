@@ -26,7 +26,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 public class MainActivity extends AppCompatActivity {
+
 
     TextView[] textViewArray = new TextView[2];
     RequestQueue queue;
@@ -49,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
         gradientDrawable[0] = (GradientDrawable) textViewArray[0].getBackground().mutate();
         gradientDrawable[1] = (GradientDrawable) textViewArray[1].getBackground().mutate();
-
-
-
 
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
@@ -93,10 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(this, 1000);
             }
         };handler.postDelayed(runnable, 1000) ;
-
-
-
-
 
     }
 }
