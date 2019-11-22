@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.csi4999.grizzpark.MainActivity;
+import com.csi4999.grizzpark.MapActivity;
 import com.csi4999.grizzpark.R;
 import com.csi4999.grizzpark.ui.login.LoginViewModel;
 import com.csi4999.grizzpark.ui.login.LoginViewModelFactory;
@@ -109,7 +110,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void signedIn(GoogleSignInAccount account){
         //TODO: update UI after signin
-        Intent mainAc = new Intent(getApplicationContext(), MainActivity.class);
+        Intent mainAc = new Intent(getApplicationContext(), MapActivity.class);
         startActivity(mainAc);
     }
 
