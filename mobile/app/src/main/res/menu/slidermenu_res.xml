@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#505050">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_EC"
+            android:title="Emgineering Center" />
+        <item
+            android:id="@+id/nav_HHB"
+            android:title="Human Health Building" />
+        <item
+            android:id="@+id/nav_MSC"
+            android:title="Math And Science Center" />
+        <item
+            android:id="@+id/nav_sign"
+            android:title="Sign Out" />
+    </group>
+</menu>

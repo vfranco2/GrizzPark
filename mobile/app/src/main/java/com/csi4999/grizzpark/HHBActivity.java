@@ -1,8 +1,19 @@
 package com.csi4999.grizzpark;
+
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.speech.tts.TextToSpeech;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -14,49 +25,29 @@ import com.csi4999.grizzpark.ui.login.LoginActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.os.Handler;
-import android.speech.tts.TextToSpeech;
-import android.view.View;
-import android.view.MenuItem;
-import android.widget.TextView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Locale;
 
-import static android.graphics.Color.BLACK;
-import static android.graphics.Color.GREEN;
-import static android.graphics.Color.RED;
-import static android.graphics.Color.green;
-import static android.graphics.Color.red;
+public class HHBActivity extends AppCompatActivity {
 
-public class MainActivity extends AppCompatActivity {
     TextToSpeech t1;
-    TextView[] textViewArray = new TextView[2];
-    CardView[] cardViewArray = new CardView[2];
+    TextView textHHB;
+    CardView cardHHB;
     RequestQueue queue;
     String url ="http://3.133.144.189:4444/";
-    int[] rowvar = new int [2];
+    int[] rowvar = new int [3];
     private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_hhb);
         mDrawerLayout = findViewById(R.id.navmenubar);
-        textViewArray[0] = findViewById(R.id.fourthRowEC);
-        textViewArray[1] = findViewById(R.id.thirdRowEC);
-        cardViewArray[0] = findViewById(R.id.fourthCardEC);
-        cardViewArray[1] = findViewById(R.id.thirdCardEC);
+        textHHB = findViewById(R.id.firstRowHHB);
+        cardHHB = findViewById(R.id.firstCardHHB);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(android.graphics.Color.WHITE);
@@ -76,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };handler.postDelayed(runnable, 1000) ;
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_viewhhb);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -84,19 +75,19 @@ public class MainActivity extends AppCompatActivity {
                         menuItem.setChecked(true);
                         switch(menuItem.getItemId()){
                             case R.id.nav_EC:
-                                Intent interestsEC = new Intent(MainActivity.this, MainActivity.class);
+                                Intent interestsEC = new Intent(HHBActivity.this, MainActivity.class);
                                 startActivity(interestsEC);
                                 break;
                             case R.id.nav_HHB:
-                                Intent interestsHHB = new Intent(MainActivity.this, HHBActivity.class);
+                                Intent interestsHHB = new Intent(HHBActivity.this, HHBActivity.class);
                                 startActivity(interestsHHB);
                                 break;
                             case R.id.nav_MSC:
-                                Intent interestsMSC = new Intent(MainActivity.this, MSCActivity.class);
+                                Intent interestsMSC = new Intent(HHBActivity.this, MSCActivity.class);
                                 startActivity(interestsMSC);
                                 break;
                             case R.id.nav_sign:
-                                Intent interestsSign = new Intent(MainActivity.this, LoginActivity.class);
+                                Intent interestsSign = new Intent(HHBActivity.this, LoginActivity.class);
                                 startActivity(interestsSign);
                                 break;
                         }
@@ -107,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getDbData(){
-        //final GradientDrawable[] gradientDrawable = new GradientDrawable[2];
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -115,42 +105,29 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try{
                             JSONArray rowstate = response.getJSONArray("data");
-                            for (int i = 0; i<2; i++){
-                                JSONObject obj = rowstate.getJSONObject(i);
-                                rowvar[i] = obj.getInt("numOfCars");
-                                int spots = 42-rowvar[i];
-                                textViewArray[i].setText(spots+" spots available");
-                                //textViewArray[i].setText(spots+" cars detected");
-                                //gradientDrawable[i] = (GradientDrawable) textViewArray[i].getBackground().mutate();
-                                //spots = 40;
-                                //if (spots < 18){gradientDrawable[i].setColor(Color.rgb(177,255,177));}
-                                //else if (spots == 42){gradientDrawable[i].setColor(Color.rgb(157,0,0));}
-                                //else {gradientDrawable[i].setColor(Color.rgb(245,245,10));}
-                                if (rowvar[i] < 18){cardViewArray[i].setCardBackgroundColor(0xff76ba1b);}
-                                else if (rowvar[i] == 42){cardViewArray[i].setCardBackgroundColor(0xffe62020);}
-                                else {cardViewArray[i].setCardBackgroundColor(0xffffdc00);}
-                            }
-                            System.out.println(rowvar[0]);
-                            System.out.println(rowvar[1]);
-                            FloatingActionButton fab = findViewById(R.id.fab);
+
+                            JSONObject obj = rowstate.getJSONObject(2);
+                            rowvar[2] = obj.getInt("numOfCars");
+                            int spots = 16-rowvar[2];
+                            textHHB.setText(spots+" spots available");
+                            if (rowvar[2] < 8){cardHHB.setCardBackgroundColor(0xff76ba1b);}
+                            else if (rowvar[2] == 16){cardHHB.setCardBackgroundColor(0xffe62020);}
+                            else {cardHHB.setCardBackgroundColor(0xffffdc00);}
+
+                            System.out.println(rowvar[2]);
+                            FloatingActionButton fab = findViewById(R.id.fabhhb);
                             fab.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     final String rowline;
-                                    final String rowname;
-                                    if (rowvar[0] > rowvar[1]){
-                                        rowline = Integer.toString(42-rowvar[1]);
-                                        rowname = " three.";
-                                    }
-                                    else {rowline = Integer.toString(42-rowvar[0]);
-                                        rowname = " four.";}
+                                    rowline = Integer.toString(16-rowvar[2]);
                                     t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
                                         @Override
                                         public void onInit(int status) {
                                             if(status != TextToSpeech.ERROR) {
                                                 t1.setLanguage(Locale.UK);
                                             } else{System.out.print("Whoops");}
-                                            t1.speak("There are "+rowline+" spots available in row "+rowname, TextToSpeech.QUEUE_FLUSH, null);
+                                            t1.speak("There are "+rowline+" spots available in the handicapped row.", TextToSpeech.QUEUE_FLUSH, null);
                                         }
                                     });
                                 }
