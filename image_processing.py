@@ -14,3 +14,10 @@ second_row_ = image2.rotate(200)
 box3 = (175, 50, 600, 900)
 second_row = second_row_.crop(box3)
 second_row.save("secrow.jpg")
+
+
+image2 = Image.open('/var/www/html/img/testpichhb.jpg')  │
+image2 = image2.rotate(180)                               │
+box = (0, 850, 9900, 9900)                                │
+image2 = image2.crop(box)                                 │
+image2.save("thirdRow.jpg") 
