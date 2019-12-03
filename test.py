@@ -10,9 +10,9 @@ ap.add_argument("-i", "--image", required=True,
 	help="path to input image")
 ap.add_argument("-y", "--yolo", required=True,
     help="base path to YOLO directory")
-ap.add_argument("-c", "--confidence", type=float, default=0.0,
+ap.add_argument("-c", "--confidence", type=float, default=0.1,
  	help="minimum probability to filter weak detections")
-ap.add_argument("-t", "--threshold", type=float, default=0,
+ap.add_argument("-t", "--threshold", type=float, default=100,
  	help="threshold when applying non-maxima suppression")
 args = vars(ap.parse_args())
 
@@ -89,8 +89,10 @@ if(args["image"][0] == "s"):
 else:
         rows = "first"
 
-
+delete = "delete from data where row = '%s'" % rows
 sql = "INSERT INTO data(row ,numOfCars) VALUES ('%s','%d')" % (rows, num)
+cur.execute(delete)
+db.commit()
 cur.execute(sql)
 db.commit()
 db.close()
