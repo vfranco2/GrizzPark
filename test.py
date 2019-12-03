@@ -80,14 +80,20 @@ if len(idxs) > 0:
  			0.5, color, 2)
 
 print(str(len(idxs)) + " detections found")
+cv2.imshow("Image", image)
+cv2.waitKey(0)
+
 num = len(idxs)
 db = MySQLdb.connect(host="localhost", user="root", passwd="pass", db="project")
 cur = db.cursor()
 rows = ""
-if(args["image"][0] == "s"):
+imageParam = args["image"][0]
+if(imageParam == "s"):
         rows = "second"
-else:
+else if(imageParam == "f"):
         rows = "first"
+else:
+        rows = "third"
 
 delete = "delete from data where row = '%s'" % rows
 sql = "INSERT INTO data(row ,numOfCars) VALUES ('%s','%d')" % (rows, num)
