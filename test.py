@@ -80,8 +80,6 @@ if len(idxs) > 0:
  			0.5, color, 2)
 
 print(str(len(idxs)) + " detections found")
-cv2.imshow("Image", image)
-cv2.waitKey(0)
 
 num = len(idxs)
 db = MySQLdb.connect(host="localhost", user="root", passwd="pass", db="project")
@@ -90,7 +88,7 @@ rows = ""
 imageParam = args["image"][0]
 if(imageParam == "s"):
         rows = "second"
-else if(imageParam == "f"):
+elif(imageParam == "f"):
         rows = "first"
 else:
         rows = "third"
@@ -104,6 +102,3 @@ db.commit()
 db.close()
 
 
-
-#cv2.imshow("Image", image)
-#cv2.waitKey(0)
