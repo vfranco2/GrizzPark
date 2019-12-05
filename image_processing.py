@@ -1,22 +1,31 @@
 from PIL import Image
 
 image = Image.open('/var/www/html/img/testpic.png')
-box = (300, 0, 900, 700)
-image1 = image.crop(box)
-first_row_ = image1.rotate(-200)
-box4 = (100, 0, 500, 900)
-first_row = first_row_.crop(box4)
-first_row.save("firstrow.png")
+image = image1.rotate(180)
+box = (450, 200, 1100, 1100)
+image = image.crop(box)
+image.save("firstrow.png")
 
-box2 = (900, -50, 1600, 800)
-image2 = image.crop(box2)
-second_row_ = image2.rotate(200)
-box3 = (175, 50, 600, 900)
-second_row = second_row_.crop(box3)
-second_row.save("secrow.png")
+
+box = (1200, 150, 2000, 1100)
+image = image.crop(box)
+image1 = image1.rotate(180)
+image1.save("secrow.png")
+
 
 image3 = Image.open('/var/www/html/img/testpichhb.png')
+#image3 = Image.open('/home/jon/Pictures/testpichhb.png')
 image3 = image3.rotate(180)
-box = (0, 850, 9900, 9900)
+box = (0, 500, 2000, 1800)
 image3 = image3.crop(box)
-image2.save("thirdRow.png")
+image3.save("thirdRow.png")
+
+#image4 = Image.open('/home/jon/Pictures/testpicmsc.png')
+image4 = Image.open('/var/www/html/img/testpicmsc.png')
+box = (450, 200, 1000, 2000)
+image = image4.crop(box)
+image.save("4.png")
+
+box1 = (900, 200, 1500, 2000)
+image = image4.crop(box1)
+image.save("5.png")

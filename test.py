@@ -90,8 +90,13 @@ if(imageParam == "s"):
         rows = "second"
 elif(imageParam == "f"):
         rows = "first"
-else:
+elif(imageParam == "t"):
         rows = "third"
+elif(imageParam == "4"):
+        rows = "fourth"
+else(imageParam == "t"):
+        rows = "fifth"
+
 
 delete = "delete from data where row = '%s'" % rows
 sql = "INSERT INTO data(row ,numOfCars) VALUES ('%s','%d')" % (rows, num)
