@@ -1,17 +1,17 @@
 from PIL import Image
 
-image = Image.open('/var/www/html/img/testpic.png')
+# image1 = Image.open('/home/jon/Pictures/testpic.png')
+image1 = Image.open('/var/www/html/img/testpic.png')
 image = image1.rotate(180)
 box = (450, 200, 1100, 1100)
 image = image.crop(box)
 image.save("firstrow.png")
 
 
-box = (1200, 150, 2000, 1100)
-image = image.crop(box)
 image1 = image1.rotate(180)
-image1.save("secrow.png")
-
+box = (1200, 150, 2000, 1100)
+image = image1.crop(box)
+image.save("secrow.png")
 
 image3 = Image.open('/var/www/html/img/testpichhb.png')
 #image3 = Image.open('/home/jon/Pictures/testpichhb.png')
