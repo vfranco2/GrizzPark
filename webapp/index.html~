@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <meta http-equiv=X-UA-Compatible content="IE=edge">
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <link rel=icon href=/favicon.ico>
+  <title>GrizzPark</title>
+  <link href=/js/about.6caac6af.js rel=prefetch>
+  <link href=/css/app.f21d90f9.css rel=preload as=style>
+  <link href=/js/app.14985fd2.js rel=preload as=script>
+  <link href=/js/chunk-vendors.a616f3d7.js rel=preload as=script>
+  <link href=/css/app.f21d90f9.css rel=stylesheet>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <noscript><strong>We're sorry, but GrizzPark doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript>
+  <div id=app></div>
+
+  <nav class="navbar navbar-dark static-fixed navbar-expand-sm" style="background-color: #89734c;">
+    <a class="navbar-brand" href="#">GrizzPark</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://github.com/vfranco2/GrizzPark">Github</a></li>
+        </ul>
+        <ul class="nav navbar-nav" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#f1" role="tab">Feed 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#f2" role="tab">Feed 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#f3" role="tab">Feed 3</a>
+          </li>
+        </ul>
+    </div>
+  </nav>
+
+  <div class="tab-content">
+    <div id="f1" class="container tab-pane active">
+      <div class="container">
+          <div class="cont1">
+            <div class="row">
+              <div class="card">
+                <img class="card-img-top" id="img" alt="Feed_status" src=".\img\testpic.png"; width="auto"; height="auto"; style="transform:rotate(180deg)";></img>
+                <div class="card-body">
+                  <h5 class="card-title">Feed_1</h5>
+                  <p class="card-text">Feed of the EC Parking Lot, Camera 1.</p>
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    </div>
+    <div id="f2" class="container tab-pane fade">
+      <div class="container">
+          <div class="cont1">
+            <div class="row">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Feed_2</h5>
+                  <p class="card-text">Coming soon.</p>
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+    <div id="f3" class="container tab-pane fade">
+      <div class="container">
+          <div class="cont1">
+            <div class="row">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Feed_3</h5>
+                  <p class="card-text">Coming soon.</p>
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script>
+  function refresh(node)
+  {
+    var times = 3500; // gap in Milli Seconds;
+    (function startRefresh()
+    {
+      var address;
+      if(node.src.indexOf('?')>-1)
+      address = node.src.split('?')[0];
+      else
+      address = node.src;
+      node.src = address+"?time="+new Date().getTime();
+      setTimeout(startRefresh,times);
+    })();
+  }
+  window.onload = function()
+  {
+    var node = document.getElementById('img');
+    refresh(node);
+  }
+  </script>
+
+</body></html>

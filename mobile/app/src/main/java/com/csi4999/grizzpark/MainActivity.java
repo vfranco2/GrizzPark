@@ -99,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
                                 Intent interestsSign = new Intent(MainActivity.this, LoginActivity.class);
                                 startActivity(interestsSign);
                                 break;
+                            case R.id.nav_cred:
+                                Intent interestsCred = new Intent(MainActivity.this, CredActivity.class);
+                                startActivity(interestsCred);
+                                break;
                         }
                         mDrawerLayout.closeDrawers();
                         return true;
@@ -107,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getDbData(){
-        //final GradientDrawable[] gradientDrawable = new GradientDrawable[2];
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -119,15 +122,15 @@ public class MainActivity extends AppCompatActivity {
                                 JSONObject obj = rowstate.getJSONObject(i);
                                 rowvar[i] = obj.getInt("numOfCars");
                                 int spots = 42-rowvar[i];
-                                textViewArray[i].setText(spots+" spots available");
-                                //textViewArray[i].setText(spots+" cars detected");
-                                //gradientDrawable[i] = (GradientDrawable) textViewArray[i].getBackground().mutate();
-                                //spots = 40;
-                                //if (spots < 18){gradientDrawable[i].setColor(Color.rgb(177,255,177));}
-                                //else if (spots == 42){gradientDrawable[i].setColor(Color.rgb(157,0,0));}
-                                //else {gradientDrawable[i].setColor(Color.rgb(245,245,10));}
-                                if (rowvar[i] < 18){cardViewArray[i].setCardBackgroundColor(0xff76ba1b);}
-                                else if (rowvar[i] == 42){cardViewArray[i].setCardBackgroundColor(0xffe62020);}
+                                //textViewArray[i].setText(spots+" spots available");
+                                textViewArray[i].setText(rowvar[i]+" spots available");
+
+                                //if (rowvar[i] < 18){cardViewArray[i].setCardBackgroundColor(0xff76ba1b);}
+                                //else if (rowvar[i] == 42){cardViewArray[i].setCardBackgroundColor(0xffe62020);}
+                                //else {cardViewArray[i].setCardBackgroundColor(0xffffdc00);}
+
+                                if (spots < 18){cardViewArray[i].setCardBackgroundColor(0xff76ba1b);}
+                                else if (spots == 42){cardViewArray[i].setCardBackgroundColor(0xffe62020);}
                                 else {cardViewArray[i].setCardBackgroundColor(0xffffdc00);}
                             }
                             System.out.println(rowvar[0]);
@@ -139,11 +142,15 @@ public class MainActivity extends AppCompatActivity {
                                     final String rowline;
                                     final String rowname;
                                     if (rowvar[0] > rowvar[1]){
-                                        rowline = Integer.toString(42-rowvar[1]);
-                                        rowname = " three.";
+                                        //rowline = Integer.toString(42-rowvar[1]);
+                                        rowline = Integer.toString(rowvar[0]);
+                                        //rowname = " three.";
+                                        rowname = " four.";
                                     }
-                                    else {rowline = Integer.toString(42-rowvar[0]);
-                                        rowname = " four.";}
+                                    else {//rowline = Integer.toString(42-rowvar[0]);
+                                        rowline = Integer.toString(rowvar[1]);
+                                        //rowname = " four.";
+                                        rowname = " three.";}
                                     t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
                                         @Override
                                         public void onInit(int status) {

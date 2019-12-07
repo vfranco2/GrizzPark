@@ -31,6 +31,14 @@
 
         <include layout="@layout/content_msc" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabmsc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_viewmsc"
@@ -39,6 +47,8 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="false"
         app:menu="@menu/slidermenu_res"
-        app:headerLayout="@layout/slidermenu_layout_res"/>
+        app:headerLayout="@layout/slidermenu_layout_res"
+        android:background="#505050"
+        app:itemTextColor="#FFFFFF"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

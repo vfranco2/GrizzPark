@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#505050">
-    <group android:checkableBehavior="single">
+    android:background="#505050"
+    android:textColor="#FFFFFF">
+    <group android:checkableBehavior="single"
+        android:textColor="#FFFFFF">
         <item
             android:id="@+id/nav_EC"
-            android:title="Emgineering Center" />
+            android:title="Engineering Center"
+            android:textColor="#FFFFFF"/>
         <item
             android:id="@+id/nav_HHB"
-            android:title="Human Health Building" />
+            android:title="Human Health Building"
+            android:textColor="#FFFFFF"/>
         <item
             android:id="@+id/nav_MSC"
-            android:title="Math And Science Center" />
+            android:title="Math And Science Center"
+            android:textColor="#FFFFFF"/>
         <item
             android:id="@+id/nav_sign"
-            android:title="Sign Out" />
+            android:title="Sign Out"
+            android:textColor="#FFFFFF"/>
+        <item
+            android:id="@+id/nav_cred"
+            android:title="Credits"
+            android:textColor="#FFFFFF"/>
     </group>
 </menu>

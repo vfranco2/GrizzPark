@@ -47,6 +47,8 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="false"
         app:menu="@menu/slidermenu_res"
-        app:headerLayout="@layout/slidermenu_layout_res"/>
+        app:headerLayout="@layout/slidermenu_layout_res"
+        android:background="#505050"
+        app:itemTextColor="#FFFFFF"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

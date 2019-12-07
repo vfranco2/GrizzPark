@@ -108,10 +108,10 @@ public class HHBActivity extends AppCompatActivity {
 
                             JSONObject obj = rowstate.getJSONObject(2);
                             rowvar[2] = obj.getInt("numOfCars");
-                            int spots = 16-rowvar[2];
+                            int spots = 15-rowvar[2];
                             textHHB.setText(spots+" spots available");
                             if (rowvar[2] < 8){cardHHB.setCardBackgroundColor(0xff76ba1b);}
-                            else if (rowvar[2] == 16){cardHHB.setCardBackgroundColor(0xffe62020);}
+                            else if (rowvar[2] == 15){cardHHB.setCardBackgroundColor(0xffe62020);}
                             else {cardHHB.setCardBackgroundColor(0xffffdc00);}
 
                             System.out.println(rowvar[2]);
@@ -120,7 +120,7 @@ public class HHBActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(View view) {
                                     final String rowline;
-                                    rowline = Integer.toString(16-rowvar[2]);
+                                    rowline = Integer.toString(15-rowvar[2]);
                                     t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
                                         @Override
                                         public void onInit(int status) {

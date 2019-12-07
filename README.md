@@ -1,1 +1,3 @@
-GrizzPark is a service that allows Oakland University students to track parking at the Engineering Center in real time, helping students find parking spots and easing traffic congestion.
+GrizzPark is a service that allows Oakland University students to track parking at a selection of parking lots at Oakland University in real time, easing traffic congestion.
+
+This is our final submission, containing the most important compilable parts of our code, streamlined and improved over a semester.
