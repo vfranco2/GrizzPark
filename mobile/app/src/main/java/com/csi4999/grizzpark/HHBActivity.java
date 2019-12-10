@@ -108,6 +108,12 @@ public class HHBActivity extends AppCompatActivity {
 
                             JSONObject obj = rowstate.getJSONObject(2);
                             rowvar[2] = obj.getInt("numOfCars");
+                            if (rowvar[2] > 15) {
+                                rowvar[2] = 15;
+                            }
+                            else{
+                                System.out.println("hhb good");
+                            }
                             int spots = 15-rowvar[2];
                             textHHB.setText(spots+" spots available");
                             if (rowvar[2] < 8){cardHHB.setCardBackgroundColor(0xff76ba1b);}

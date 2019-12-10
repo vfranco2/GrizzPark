@@ -115,6 +115,12 @@ public class MainActivity extends AppCompatActivity {
                             for (int i = 0; i<2; i++){
                                 JSONObject obj = rowstate.getJSONObject(i);
                                 rowvar[i] = obj.getInt("numOfCars");
+                                if (rowvar[i] > 42){
+                                    rowvar[i] = 42;
+                                }
+                                else {
+                                    System.out.print("good");
+                                }
                                 int spots = 42-rowvar[i];
                                 textViewArray[i].setText(spots+" spots available");
                                 if (rowvar[i] < 18){cardViewArray[i].setCardBackgroundColor(0xff76ba1b);}
