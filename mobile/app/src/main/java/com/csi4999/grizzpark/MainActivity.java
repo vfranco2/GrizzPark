@@ -33,12 +33,6 @@ import org.json.JSONObject;
 
 import java.util.Locale;
 
-import static android.graphics.Color.BLACK;
-import static android.graphics.Color.GREEN;
-import static android.graphics.Color.RED;
-import static android.graphics.Color.green;
-import static android.graphics.Color.red;
-
 public class MainActivity extends AppCompatActivity {
     TextToSpeech t1;
     TextView[] textViewArray = new TextView[2];
@@ -122,16 +116,11 @@ public class MainActivity extends AppCompatActivity {
                                 JSONObject obj = rowstate.getJSONObject(i);
                                 rowvar[i] = obj.getInt("numOfCars");
                                 int spots = 42-rowvar[i];
-                                //textViewArray[i].setText(spots+" spots available");
-                                textViewArray[i].setText(rowvar[i]+" spots available");
-
-                                //if (rowvar[i] < 18){cardViewArray[i].setCardBackgroundColor(0xff76ba1b);}
-                                //else if (rowvar[i] == 42){cardViewArray[i].setCardBackgroundColor(0xffe62020);}
-                                //else {cardViewArray[i].setCardBackgroundColor(0xffffdc00);}
-
-                                if (spots < 18){cardViewArray[i].setCardBackgroundColor(0xff76ba1b);}
-                                else if (spots == 42){cardViewArray[i].setCardBackgroundColor(0xffe62020);}
+                                textViewArray[i].setText(spots+" spots available");
+                                if (rowvar[i] < 18){cardViewArray[i].setCardBackgroundColor(0xff76ba1b);}
+                                else if (rowvar[i] == 42){cardViewArray[i].setCardBackgroundColor(0xffe62020);}
                                 else {cardViewArray[i].setCardBackgroundColor(0xffffdc00);}
+
                             }
                             System.out.println(rowvar[0]);
                             System.out.println(rowvar[1]);
@@ -142,15 +131,13 @@ public class MainActivity extends AppCompatActivity {
                                     final String rowline;
                                     final String rowname;
                                     if (rowvar[0] > rowvar[1]){
-                                        //rowline = Integer.toString(42-rowvar[1]);
-                                        rowline = Integer.toString(rowvar[0]);
-                                        //rowname = " three.";
+                                        rowline = Integer.toString(42-rowvar[1]);
+                                        rowname = " three.";
+                                    }
+                                    else {
+                                        rowline = Integer.toString(42-rowvar[0]);
                                         rowname = " four.";
                                     }
-                                    else {//rowline = Integer.toString(42-rowvar[0]);
-                                        rowline = Integer.toString(rowvar[1]);
-                                        //rowname = " four.";
-                                        rowname = " three.";}
                                     t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
                                         @Override
                                         public void onInit(int status) {

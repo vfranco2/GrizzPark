@@ -110,16 +110,15 @@ public class MSCActivity extends AppCompatActivity {
                             JSONObject obj2 = rowstate.getJSONObject(4);
                             rowvar[3] = obj1.getInt("numOfCars");
                             rowvar[4] = obj2.getInt("numOfCars");
+                            textViewArrayMSC[0].setText(56-rowvar[3]+" spots available");
+                            textViewArrayMSC[1].setText(56-rowvar[4]+" spots available");
 
-                            textViewArrayMSC[0].setText(rowvar[3]+" spots available");
-                            textViewArrayMSC[1].setText(rowvar[4]+" spots available");
-
-                            if (56-rowvar[3] < 18){cardViewArrayMSC[0].setCardBackgroundColor(0xff76ba1b);}
-                            else if (56-rowvar[3] == 42){cardViewArrayMSC[0].setCardBackgroundColor(0xffe62020);}
+                            if (rowvar[3] < 18){cardViewArrayMSC[0].setCardBackgroundColor(0xff76ba1b);}
+                            else if (rowvar[3] == 56){cardViewArrayMSC[0].setCardBackgroundColor(0xffe62020);}
                             else {cardViewArrayMSC[0].setCardBackgroundColor(0xffffdc00);}
 
-                            if (56-rowvar[4] < 18){cardViewArrayMSC[1].setCardBackgroundColor(0xff76ba1b);}
-                            else if (56-rowvar[4] == 56){cardViewArrayMSC[1].setCardBackgroundColor(0xffe62020);}
+                            if (rowvar[4] < 18){cardViewArrayMSC[1].setCardBackgroundColor(0xff76ba1b);}
+                            else if (rowvar[4] == 56){cardViewArrayMSC[1].setCardBackgroundColor(0xffe62020);}
                             else {cardViewArrayMSC[1].setCardBackgroundColor(0xffffdc00);}
 
                             System.out.println(rowvar[3]);
@@ -131,12 +130,12 @@ public class MSCActivity extends AppCompatActivity {
                                     final String rowline;
                                     final String rowname;
                                     if (rowvar[3] > rowvar[4]){
-                                        rowline = Integer.toString(rowvar[3]);
-                                        rowname = " one.";
+                                        rowline = Integer.toString(56-rowvar[4]);
+                                        rowname = " two.";
                                     }
                                     else {
-                                        rowline = Integer.toString(rowvar[4]);
-                                        rowname = " two.";}
+                                        rowline = Integer.toString(56-rowvar[3]);
+                                        rowname = " one.";}
                                     t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
                                         @Override
                                         public void onInit(int status) {

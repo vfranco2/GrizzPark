@@ -13,5 +13,5 @@
         android:textAlignment="center"
         android:layout_marginTop="200dp"
         android:textSize="18dp"
-        android:text="GrizzPark built by:\nVlad Franco  -  Jon Mukes\nRyan Dodge    -   Robbie Maudrie\nNick Furlo  -  Nick Papatheodore\nFor CSI 4999"/>
+        android:text="GrizzPark built by:\nVlad Franco  -  Jon Mukes\nRyan Dodge    -   Earl Maudrie\nNick Furlo  -  Nick Papatheodore\nFor CSI 4999"/>
 </LinearLayout>
